@@ -1,0 +1,309 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Shadow index</title>
+    <script src="lib/JQuery/jquery.min.js"></script>
+</head>
+<body>
+    <script>
+        var jq = $.noConflict();
+        jq(document).ready(function () {
+            jq(".ul2").mouseenter(function () {
+                jq(".ul2-1").slideDown();
+            });
+            jq(".ul2").mouseleave(function () {
+                jq(".ul2-1").slideUp();
+            });
+            jq(".ul3").mouseenter(function () {
+                jq(".ul3-1").slideDown();
+            });
+            jq(".ul3").mouseleave(function () {
+                jq(".ul3-1").slideUp();
+            });
+            var x = 2;
+            
+            jq(".btn1").click(function () {
+                x += 1;
+                if (x % 2 == 0) {
+                    
+                    jq(".sidemenu,.sidemenu1").animate({
+                        "width": "140",
+                        "opacity": "1",
+                    }, 1100, function () {
+                            jq("span").animate({
+                                "opacity":"1",
+                            });
+                        });
+
+                    jq(".num1-menu").animate({
+                        "width": "192px",
+                        "height":"460px",
+                    }, 960);
+                    jq(".num1-menu").css({
+                        "background-color":"rgba(46, 136, 186, 0.51)"
+                    }, 960);
+
+                }
+                else {
+                    jq("span").css("opacity","0");
+
+                    jq(".sidemenu,.sidemenu1").animate({
+                        "width": "0px",
+                        "opacity":"0",
+                    }, 1000);
+                    jq(".num1-menu").animate({
+                        "width": "50px",
+                    }, 1100, function () {
+                            jq(".num1-menu").css("height","100px");
+                        });
+
+                    jq(".num1-menu").css({
+                        "background-color": "rgba(46, 136, 186, 0)"
+                    }, 960);
+                }
+
+            });
+            
+
+            jq("iframe").contents().click(function () {
+                jq(".sidemenu1").css("opacity", "0");
+                jq(".sidemenu,.sidemenu1").animate({
+                    "width": "0px",
+                    "opacity": "0",
+                }, 1000);
+                jq(".num1-menu").animate({
+                    "width": "50px",
+                }, 1100, function () {
+                    jq(".num1-menu").css("height", "100px");
+                });
+
+                jq(".num1-menu").css({
+                    "background-color": "rgba(46, 136, 186, 0)"
+                }, 960);
+                
+            });
+
+            var y = 2;
+            jq(".btn2").click(function () {
+                y += 1;
+                if (y % 2 == 0) {
+                    jq("iframe").contents().find("body,div").removeClass("frame-div");
+                }
+                else {
+                    jq("iframe").contents().find("body,div").addClass("frame-div");
+                    }
+            });
+            //jq(".ul2").hover(function () {
+            //    jq(this).css("background-color", "cadetblue");
+            //});
+            //jq(".ul2-1").hover(
+            //    function () {
+            //        jq(".ul2").css("background", "none");
+            //    });
+        });
+        
+    </script>
+    <style type="text/css">
+        html{
+            background-color:#222222;
+        }
+        .sidemenu {
+            float: left;
+            position: relative;
+            width: 140px;
+            height: 460px;
+            background-color: rgba(0, 0, 0, 0.60);
+            /*padding:36px 20px 36px 0px;*/
+            color: aliceblue;
+            font-size: 14px;
+            border-radius: 15px 15px 15px 15px;
+            box-shadow: inset -2px -2px 9px 3px #64ecec,4px 0px 6px #444444;
+            
+        }
+        .sidemenu1{
+            margin-left:0px;
+            margin-right:0px;
+            float:left;
+            
+        }
+        .li1{
+            border:0;
+            text-decoration:none;
+            padding:10px 5px 10px 0;
+            margin-bottom:22px;
+            
+        }
+        .li1, .ul2, .ul3 {
+            
+            list-style-type:none;
+            margin-bottom: 8px;
+        }
+        ul{
+            padding-left:10px;
+        }
+
+        .ul2:hover {
+            background-color: #46acbb;
+            border-radius: 5px 5px 0px 5px;
+        }
+        .ul3:hover {
+            background-color: #46acbb;
+            border-radius: 5px 5px 0px 5px;
+        }
+        .li1:hover {
+            border-radius:5px;
+        }
+        #menu1:hover {
+            background-color: #46acbb;
+        }
+        .ul2-1, .ul3-1 {
+            
+            width:84px;
+            height:auto;
+            float:right;
+            display: none;
+            color: aliceblue;
+            border-radius: 0px 0px 5px 0px;
+            font-size: 12px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+            padding-left:2px;
+            
+        }
+            
+                .ul2-1 li:hover{
+                    border-bottom:2px solid aqua;
+                }
+                .ul3-1 li:hover {
+                    border-bottom: 2px solid aqua;
+                }
+                a {
+                    text-decoration: none;
+                    color:aliceblue;
+                }
+        .ul2,.ul3{
+            padding:10px 5px 10px 0px;
+            
+        }
+        .ul2-1 li, .ul3-1 li {
+            text-align: center;
+            list-style-type: none;
+            background: #46acbb;
+            color: aqua;
+            padding-top: 12px;
+            padding-bottom: 6px;
+        }
+        #menu1{
+            padding-right:0px;
+        }
+        #sp1 {
+            padding-left: 6px;
+            padding-right: 6px;
+        }
+        #sp2{
+            color:aqua;
+        }
+        .btn1, .btn2 {
+            width: 18px;
+            height: 18px;
+            position: relative;
+            border: 4px solid red;
+            border-radius: 100%;
+            float: left;
+            margin: 12px;
+            box-shadow: 6px 5px 8px #333333;
+        }
+        .btn2 {
+            border: 4px solid khaki;
+            
+        }
+            .btn1:hover {
+                background-color: khaki;
+            }
+        .btn2:hover{
+            background-color:#333333;
+        }
+        .num1-menu{
+            position:absolute;
+            float:initial;
+            width:192px;
+            height:460px;
+            background-color:rgba(46, 136, 186, 0.51);
+            border-radius:15px 20px 20px 15px;
+        }
+        .body{
+            background-color:burlywood;
+        }
+        .frame,#frame{
+            float:right;
+            z-index:-1;
+            width:100%;
+            height:730px;
+        }
+        iframe{
+            border:none;
+            border-radius:20px;
+        }
+        #menu{
+            text-align:center;
+            padding-bottom:10px;
+            border-bottom:2px solid red;
+            
+        }
+        @media only screen and (min-width:1920px) {
+            #frame {
+                height: 996px;
+            }
+        }
+        @media only screen and (max-width:1520px) {
+            #frame {
+                height: 800px;
+            }
+        }
+        @media only screen and (min-height:1666px){
+            #frame{
+                height:1920px;
+            }
+        }
+    </style>
+    <div class="body">
+        <div class="frame">
+            <iframe id="frame" name="frame" scrolling="auto" src=""></iframe>
+        </div>
+        <div class="num1-menu">
+
+            <div class="sidemenu">
+                <p id="menu"><span>MENU</span></p>
+                <div class="sidemenu1">
+                    
+                    <ul class="ul1">
+                        <li id="menu1" class="li1"><a href="https://www.hgwlkj.cn" target="frame"><span id="sp1">首页</span></a></li>
+                        <li id="menu1" class="ul2">
+                            <span id="sp1">个人 ▼</span>
+                            <ul class="ul2-1">
+                                <li id="menu2" style="margin-top:6px;"><a href="https://shadow-code@dev.azure.com/shadow-code/python/_git/python" ><span id="sp2">代码托管</span></a></li>
+                                <li id="menu2" style="border-radius:0px 0px 5px 5px"><a href="https://baike.baidu.com/item/%E8%B5%A3%E5%B7%9E/142839?fr=aladdin" target="frame"><span id="sp2">家乡-江西赣州</span></a></li>
+                            </ul>
+                        </li>
+                        <li id="menu1" class="li1"><a href="https://notes.hgwlkj.cn" target="frame"><span id="sp1">StudyNotes</span></a></li>
+                        <li id="menu1" class="li1"><a href="https://music.hgwlkj.cn" target="frame"><span id="sp1">ShadowMusic</span></a></li>
+                        <li id="menu1" class="li1"><a href="https://www.hgwlkj.cn/hgwlkj-media/" target="frame"><span id="sp1">红光网络科技传媒</span></a></li>
+                        <li id="menu1" class="ul3">
+                            <span id="sp1">Other ▼</span>
+                            <ul class="ul3-1">
+                                <li id="menu2" style="margin-top:6px;"><a href="https://file.hgwlkj.cn/bookmarks/" target="frame"><span id="sp2">个人书签</span></a></li>
+                                <li id="menu2"><a href="https://file.hgwlkj.cn/up/index.html" target="frame"><span id="sp2">U盘找回</span></a></li>
+                                <li id="menu2" style="border-radius:0px 0px 5px 5px"><a href="https://miss.hgwlkj.cn" target="frame"><span id="sp2">记录</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="btn1" title="收起菜单"></div>
+            <div class="btn2" title="白天/夜间模式"></div>
+        </div>
+
+    </div>
+</body>
+</html>
